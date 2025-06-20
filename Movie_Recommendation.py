@@ -5,7 +5,7 @@ import webbrowser
 import openai
 
 # Add your OpenAI API key here
-#openai.api_key = "sk-your-api-key-here"
+openai.api_key = "sk-your-api-key-here"
 
 # Sample movie data structure
 movies = {
