@@ -5,7 +5,7 @@ import webbrowser
 import openai
 
 # Add your OpenAI API key here
-#openai.api_key =   # <-- Insert your OpenAI API key here
+#openai.api_key = "sk-your-api-key-here"
 
 # Sample movie data structure
 movies = {
@@ -275,13 +275,16 @@ def open_chatbot():
 
     def get_chatbot_response(prompt):
         try:
+            print(f"User Prompt:{prompt}")
             response = openai.ChatCompletion.create(
                 model="gpt-4o-mini",  # Use your specific model name here
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=150,
                 temperature=0.7,
             )
-            return response['choices'][0]['message']['content'].strip()
+            reply = response['choices'][0]['message']['content'].strip()
+            print(f"AI Response: {reply}")  # Debug log 
+            return reply
         except Exception as e:
             print(f"Error: {e}")
             return "Sorry, I'm having trouble responding right now."
